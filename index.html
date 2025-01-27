@@ -238,10 +238,10 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="is-two-thirds">
-        <h2 class="title is-3">Future Plan</h2>
+        <h2 class="title is-3">Conclusion</h2>
         <div class="content has-text-justified is-size-5">
           <p>
-            Our \( \pi_0 \) serves as the foundation for ensuring that our data generation pipeline effectively leverages the long reasoning capabilities of large language models. Looking ahead, we plan to use \( \pi_0 \) as the initial policy checkpoint for reinforcement learning training. Through this process, we aim to significantly enhance the generalization of reasoning capabilities, particularly for tasks in the financial and medical domains, which are critical for both academic research and industrial applications.
+            In this paper, we introduce a novel framework, AURORA, designed for automated process reward labeling and learning using LLMs. Unlike recent approaches \cite{zheng2024processbench, lightman2023let} that operate on limited data distributions, rely solely on questions and partial solutions, or focus only on the first error occurrence, AURORA aims to train universal PRMs by addressing these limitations. Specifically, AURORA collects candidate reasoning trajectories from diverse policy distributions, evaluates process rewards across the entire reasoning sequence to support downstream RL algorithms, and incorporates reverse verification and ensemble prompting techniques to further enhance performance. To comprehensively evaluate our approach, we curated a new benchmark, UniversalBench, which captures a wide range of policy distribution and especially contains long CoT policy outputs that closely mirror real-world PRM usage scenarios in optimizing long CoT policies. Experiments on both ProcessBench and UniversalBench demonstrate that Universal-PRM-7B, trained using AURORA, achieves SOTA performance. We have open-sourced Universal-PRM-7B and UniversalBench to encourage community adoption and further research.
           </p>
         </div>
       </div>
@@ -249,49 +249,6 @@
   </div>
 </section>
 
-
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="is-two-thirds">
-        <h2 class="title is-3">Contributor</h2>
-        <div class="content has-text-centered is-size-5">
-          <h3 class="subtitle is-4">Project Team</h3>
-          <img src="./static/images/inf_logo.png" alt="Company Icon" class="adaptive-icon" style="width: 140px; vertical-align: middle;">
-          <p><strong>INF-o1 Team</strong></p>
-          <h3 class="subtitle is-4">Supervisors</h3>
-          <p>
-            <strong>Wei Chu • Yinghui Xu • Yuan Qi</strong> 
-          </p>
-          <h3 class="subtitle is-4">Team Members (Listed in Alphabetical Order)</h3>
-          <p>
-            <strong>Chao Qu</strong> - Team Leader •  
-            <strong>Chao Wang</strong> - Infrastructure •  
-            <strong>Cheng Peng</strong> - Data Pipeline (Logical) •  
-            <strong>Dakuan Lu</strong> - Data Pipeline (Science) •  
-            <strong>Haozhe Wang</strong> - Data Pipeline (Math) & RL •  
-            <strong>Hongqing Hu</strong> - Infrastructure •  
-            <strong>Jianming Feng</strong> - Data Pipeline (Safety) •  
-            <strong>Jiaran Hao</strong> - Data Pipeline (SQL) & Infrastructure • 
-            <strong>Kelang Tian</strong> - Infrastructure •  
-            <strong>Minghao Yang</strong> - Data Pipeline (Math) •  
-            <strong>Quanbin Wang</strong> - Data Pipeline (Safety) • 
-            <strong>J.K. Liu</strong> - Data Pipeline (SQL) • 
-            <strong>Tianchu Yao</strong> - Data Pipeline & Alignment •   
-            <strong>Weidi Xu</strong> - Data Pipeline (Logical) •  
-            <strong>Xiaoyu Tan</strong> - Data Pipeline & Alignment • 
-            <strong>Yihan Songliu</strong> - Infrastructure
-          </p>
-          <h3 class="subtitle is-4">Contact Information</h3>
-          <p>
-            <strong>Chao Qu</strong>: <a href="mailto:quchao_tequila@inftech.ai">quchao_tequila@inftech.ai</a><br>
-            <strong>Xiaoyu Tan</strong>: <a href="mailto:yulin.txy@inftech.ai">yulin.txy@inftech.ai</a>
-          </p>          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
