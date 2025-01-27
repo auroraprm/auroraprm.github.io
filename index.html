@@ -118,7 +118,7 @@
           </div>
             <div class="is-size-4 publication-authors">
               <!-- Paper authors -->
-            <span class="author-block">The UniversalBench will be open-sourced due to acceptence.</span>
+            <span class="author-block">UniversalBench will be made available as open-source following the acceptance.</span>
          </div>
         </div>
       </div>
@@ -154,7 +154,7 @@
         <h2 class="title is-3">Experiment</h2>
         <div class="content has-text-justified is-size-5">
           <p>
-            In this section, we evaluate the performance of the universal PRM trained using our proposed AURORA. First, we assess the effectiveness of our framework on ProcessBench, a benchmark specifically designed to evaluate generation processes using human-annotated labels. Next, we investigate the universal capabilities of the trained PRM across diverse policy distributions. To facilitate this evaluation, we construct a novel dataset called UniversalBench that spans a wide range of policy distributions, varying in both sequence length and step separation.
+            We evaluate the performance of the universal PRM trained using our proposed AURORA. First, we assess the effectiveness of our framework on ProcessBench, a benchmark specifically designed to evaluate generation processes using human-annotated labels. Next, we investigate the universal capabilities of the trained PRM across diverse policy distributions. To facilitate this evaluation, we construct a novel dataset called UniversalBench that spans a wide range of policy distributions, varying in both sequence length and step separation.
           </p>
         </div>
       </div>
@@ -216,8 +216,11 @@
     <div class="columns is-centered has-text-centered">
       <div class="is-two-thirds">
         <div class="content has-text-justified is-size-5">
+          <p>ProcessBench experimental results shown in Table 1 demonstrate that Universal-PRM-7B, trained using our proposed AURORA, achieves superior performance on the ProcessBench benchmark, excelling in both the overall average score and evaluations across four subsets. These results highlight the effectiveness of our approach in generalization under a universal policy training distribution and underscore the robustness of our proposed ensemble prompting techniques.
+            </p>
           <p>
-            We evaluated our \(\pi_0\) model on a set of custom benchmarks, including tasks in math, SQL, safety, and logical reasoning, and compared its performance against the Qwen2.5-32B-QwQ model. The results indicate that \(\pi_0\) achieves comparable performance on most benchmarks and outperforms Qwen2.5-32B-QwQ in logical reasoning, SQL, and safety tasks, which are particularly critical for industrial applications. All evaluations were conducted using our internal framework and may differ from results reported on other open-source platforms. Furthermore, the results presented here were obtained using a greedy decoding strategy, without leveraging advanced techniques such as Best-of-N or pass@K.</p>
+            Experimental results, as shown in the \hl{Table} \ref{tab:universalbench}, demonstrate that UniversalBench training under our proposed AURORA framework has achieved superior performance, highlighting its strong generalization capabilities across diverse policy distributions. By training under the AURORA framework, UniversalBench effectively addresses the challenges by constructing \(\mathcal{D}_{\text{gen}}\) using diverse policy and prompt distributions, particularly containing long CoT reasoning. This indicates the robustness of our approach in capturing and adapting to a wide range of policy behaviors, thereby outperforming existing methods in accuracy, making it applicable to real-world scenarios where the update policy distributions are dynamic. 
+          </p>
         </div>
       </div>
     </div>
