@@ -68,8 +68,39 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                Anonymous</span>
-                  </div>
+                Xiaoyu Tan<sup>1,*,‡</sup>,</span>
+              <span class="author-block">
+                Tianchu Yao<sup>2,*</sup>,</span>
+              <span class="author-block">
+                Chao Qu<sup>2,*</sup>,</span>
+              <span class="author-block">
+                Bin Li<sup>3,*</sup>,</span>
+              <span class="author-block">
+                Minghao Yang<sup>2</sup>,</span>
+              <span class="author-block">
+                Dakuan Lu<sup>2</sup>,</span>
+              <span class="author-block">
+                Haozhe Wang<sup>4</sup>,</span>
+              <span class="author-block">
+                Xu Yinghui<sup>2</sup>,</span>
+              <span class="author-block">
+                Xihe Qiu <sup>3,†</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tencent Youtu Lab,</span>
+              <span class="author-block"><sup>2</sup>Fudan University,</span>
+              <span class="author-block"><sup>3</sup>Shanghai University of Engineering Science,</span>
+              <span class="author-block"><sup>4</sup>The Hong Kong University of Science and Technology</span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal contribution</span>
+              <span class="author-block"><sup>†</sup>Corresponding author: qiuxihe1993@gmail.com</span>
+              <br>
+              <span class="author-block"><sup>‡</sup>The first author is currently affiliated with Tencent Youtu Lab. This work was partially conducted while the author was at INF Technology (Shanghai) Co., Ltd.</span>
+            </div>
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
@@ -116,11 +147,7 @@
                 </a>
               </span> -->
             </div>
-          </div>
-            <div class="is-size-4 publication-authors">
-              <!-- Paper authors -->
-            <span class="author-block">UniversalBench will be made available as open-source following the acceptance.</span>
-         </div>
+
         </div>
       </div>
     </div>
@@ -267,6 +294,336 @@
 
 
 <!-- Youtube video -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">Prompt Details</h2>
+        
+        <div class="tabs is-centered is-boxed is-toggle">
+          <ul>
+            <li class="is-active" data-tab="prompt-gen">
+              <a>
+                <span>Prompt Set \(\mathcal{P}_{\text{gen}}\)</span>
+              </a>
+            </li>
+            <li data-tab="prompt-sep">
+              <a>
+                <span>Step Separation \(p_s\)</span>
+              </a>
+            </li>
+            <li data-tab="prompt-dis">
+              <a>
+                <span>Prompt Set \(\mathcal{P}_{\text{dis}}\)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="prompt-gen" class="content-tab">
+          <div class="content">
+            <article class="message">
+              <div class="message-header">
+                <p>Default system prompt</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                You are a helpful assistant.
+              </div>
+            </article>
+
+            <article class="message">
+              <div class="message-header">
+                <p>QwQ system prompt</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                You are a helpful and harmless assistant. You are Qwen developed by Alibaba. You should think step-by-step.
+              </div>
+            </article>
+
+            <article class="message">
+              <div class="message-header">
+                <p>INF-o1 \(\pi_0\) system prompt</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                You are an advanced AI language model specializing in solving math and programming problems step by step. Carefully analyze each part of the problem, verify the accuracy of your reasoning with relevant facts and data, and provide clear, logical solutions. Reflect on and review your approach throughout the problem-solving process to ensure precision and thoroughness. Always think through the problem step by step and provide your answers accordingly.
+              </div>
+            </article>
+
+            <article class="message">
+              <div class="message-header">
+                <p>Question prompt \(p_{0}\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[User]:</strong><br>
+                <span style="color: red;">{question}</span>
+              </div>
+            </article>
+
+            <article class="message">
+              <div class="message-header">
+                <p>Question prompt \(p_{1}\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[User]:</strong><br>
+                <span style="color: red;">{question}</span><br>
+                Let's think step by step.
+              </div>
+            </article>
+
+            <article class="message">
+              <div class="message-header">
+                <p>Question prompt \(p_{2}\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[User]:</strong><br>
+                <span style="color: red;">{question}</span><br>
+                First, deeply analyze the problem and identify key concepts and relationships, then solve it step by step with clear reasoning.
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="prompt-sep" class="content-tab is-hidden">
+          <div class="content">
+            <article class="message">
+              <div class="message-header">
+                <p>LLM discrimination prompt \(p_s\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                You are a helpful assistant who can seperate the logical steps accurately.<br>
+                <hr>
+                <strong>[User]:</strong><br>
+                Please split the following math problem-solving text according to logical 
+                steps, generating a JSON object where each step is an independent key-value 
+                pair in the format `{{ "Step X": "Content of the step" }}`, where `X` is the step number. Note:<br>
+                <br>
+                # Rules:<br>
+                1. Retain the original text for each step without any modifications, additions, or deletions, only splitting based on logical steps.<br>
+                2. If the text does not contain explicit step indications, split the steps according to the logical flow of the content. Each step should have a conclusion progression relative to the previous step and represent a complete intermediate conclusion (e.g., equations, intermediate results, planning thoughts, etc.).<br>
+                3. The final output should be a JSON object containing each logical step.<br>
+                <br>
+                <span style="color: red;">{shot}</span><br>
+                <br>
+                **Text to process:**<br>
+                <br>
+                <span style="color: red;">{answer}</span><br>
+                <br>
+                Please output directly according to the above instructions.
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="prompt-dis" class="content-tab is-hidden">
+          <div class="content">
+            <!-- p0 -->
+            <article class="message">
+              <div class="message-header">
+                <p>LLM discrimination prompt \(p_0\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                Your Role and Task:<br>
+                <br>
+                You are a math teacher, and I need your help in grading exams. I will provide you with the question, standard answer, and student answer. Based on the standard answer, you need to determine the correctness of each step in the student’s answer. The student answer will be given in JSON format, detailing each step of their solution, and you should indicate whether each step is correct or incorrect.<br>
+                <br>
+                Important Notes:<br>
+                1. The student’s answer may have a different approach from the standard answer. If the student’s reasoning is logically sound and their final answer matches the standard answer, then it should be considered correct.<br>
+                2. You need to assess each step’s correctness and mark it with 0 for incorrect and 1 for correct. For example, if there are three steps, where the first is correct, and the second and third are incorrect, then at the end of your response, output a list named judge_result like this: judge_result=[1,0,0].The judge_result can only contain 0 and 1.<br>
+                3. If a step (step i) is incorrect because of an error in the previous step (step i-1), it should be considered wrong as well, even if the deduction or calculation in step i itself is technically correct.<br>
+                4. If a step references an unrelated or inapplicable conclusion (even if the conclusion itself is correct), that step should be considered incorrect.<br>
+                5. Critically evaluate all steps and results in your answer, making sure each step has an evaluation conclusion.<br>
+                <br>
+                The user will provide the question, standard answer, and student answer. Please grade the student answer strictly according to these instructions and include the final judge_result list at the end of your response, like this format: judge_result=[1,0,0]<br>
+                <hr>
+                <strong>[User]:</strong><br>
+                # question:<br>
+                <span style="color: red;">{question}</span><br>
+                <br>
+                # standard answer:<br>
+                <span style="color: red;">{ground_truth_solution}</span><br>
+                <br>
+                # student answer:<br>
+                <span style="color: red;">{student_solution}</span><br>
+                <br>
+                # your output:
+              </div>
+            </article>
+
+            <!-- p1 -->
+            <article class="message">
+              <div class="message-header">
+                <p>LLM discrimination prompt \(p_1\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                # Your Role and Task:<br>
+                <br>
+                You are a math teacher, and I need your help in grading exams. I will provide you with the question, standard answer, and student answer. Based on the standard answer, you need to determine the correctness of each step in the student’s answer. The student answer will be given in JSON format, detailing each step of their solution, and you should indicate whether each step is correct or incorrect.<br>
+                <br>
+                # Important Notes:<br>
+                1. The student’s answer may have a different approach from the standard answer. If the student’s reasoning is logically sound and their final answer matches the standard answer, then it should be considered correct.<br>
+                2. You need to assess each step’s correctness and mark it with 0 for incorrect and 1 for correct. For example, if there are three steps, where the first is correct, and the second and third are incorrect, then at the end of your response, output a list named judge_result like this: judge_result=[1,0,0].<br>
+                3. If a step (step i) is incorrect because of an error in the previous step (step i-1), it should be considered wrong as well, even if the deduction or calculation in step i itself is technically correct.<br>
+                4. If a step references an unrelated or inapplicable conclusion (even if the conclusion itself is correct), that step should be considered incorrect.<br>
+                5. Critically evaluate all steps and results in your answer, making sure each step or results has an evaluation conclusion.<br>
+                <br>
+                The user will provide questions, model answers, and student answers. Please follow these instructions carefully to grade the student answers. You only need to respond to the final Judge_result list, as example: judge_result=[1,1,1,1].Do not do any additional explanation.<br>
+                <br>
+                <span style="color: red;">{shot}</span><br>
+                <hr>
+                <strong>[User]:</strong><br>
+                # question:<br>
+                <span style="color: red;">{question}</span><br>
+                <br>
+                # standard answer:<br>
+                <span style="color: red;">{ground_truth_solution}</span><br>
+                <br>
+                # student answer:<br>
+                <span style="color: red;">{student_solution}</span><br>
+                <br>
+                # your output:
+              </div>
+            </article>
+
+            <!-- p2 -->
+            <article class="message">
+              <div class="message-header">
+                <p>LLM discrimination prompt \(p_2\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                Your Role and Task:<br>
+                <br>
+                You are a math teacher, and I need your help in grading exams. I will provide you with the question, standard answer, and student answer. Based on the standard answer, you need to determine the correctness of each step in the student’s answer. The student answer will be given in JSON format, detailing each step of their solution, and you should indicate whether each step is correct or incorrect.<br>
+                <br>
+                Important Notes:<br>
+                1. The student’s answer may have a different approach from the standard answer. If the student’s reasoning is logically sound and their final answer matches the standard answer, then it should be considered correct.<br>
+                2. You need to assess each step’s correctness and mark it with 0 for incorrect and 1 for correct. For example, if there are three steps, where the first is correct, and the second and third are incorrect, then at the end of your response, output a list named judge_result like this: judge_result=[1,0,0].The judge_result can only contain 0 and 1.<br>
+                3. If a step (step i) is incorrect because of an error in the previous step (step i-1), it should be considered wrong as well, even if the deduction or calculation in step i itself is technically correct.<br>
+                4. If a step references an unrelated or inapplicable conclusion (even if the conclusion itself is correct), that step should be considered incorrect.<br>
+                5. Critically evaluate all steps and results in your answer, making sure each step has an evaluation conclusion.<br>
+                <br>
+                The user will provide the question, standard answer, and student answer. Please grade the student answer strictly according to these instructions and include the final judge_result list at the end of your response, like this format: judge_result=[1,0,0]<br>
+                <hr>
+                <strong>[User]:</strong><br>
+                # question:<br>
+                <span style="color: red;">{question}</span><br>
+                <br>
+                # standard answer:<br>
+                <span style="color: red;">{ground_truth_solution}</span><br>
+                <br>
+                # student answer:<br>
+                <span style="color: red;">{student_solution}</span><br>
+                <br>
+                Your Role and Task:<br>
+                <br>
+                You are a math teacher, and I need your help in grading exams. I will provide you with the question, standard answer, and student answer. Based on the standard answer, you need to determine the correctness of each step in the student’s answer. The student answer will be given in JSON format, detailing each step of their solution, and you should indicate whether each step is correct or incorrect.<br>
+                <br>
+                Important Notes:<br>
+                1. The student’s answer may have a different approach from the standard answer. If the student’s reasoning is logically sound and their final answer matches the standard answer, then it should be considered correct.<br>
+                2. You need to assess each step’s correctness and mark it with 0 for incorrect and 1 for correct. For example, if there are three steps, where the first is correct, and the second and third are incorrect, then at the end of your response, output a list named judge_result like this: judge_result=[1,0,0].The judge_result can only contain 0 and 1.<br>
+                3. If a step (step i) is incorrect because of an error in the previous step (step i-1), it should be considered wrong as well, even if the deduction or calculation in step i itself is technically correct.<br>
+                4. If a step references an unrelated or inapplicable conclusion (even if the conclusion itself is correct), that step should be considered incorrect.<br>
+                5. Critically evaluate all steps and results in your answer, making sure each step has an evaluation conclusion.<br>
+                <br>
+                The user will provide the question, standard answer, and student answer. Please grade the student answer strictly according to these instructions and include the final judge_result list at the end of your response, like this format: judge_result=[1,0,0]
+              </div>
+            </article>
+
+            <!-- p3 -->
+            <article class="message">
+              <div class="message-header">
+                <p>LLM discrimination prompt \(p_3\)</p>
+              </div>
+              <div class="message-body">
+                <strong>[System]:</strong><br>
+                # Your Role and Task:<br>
+                <br>
+                You are a math teacher, and I need your help in grading exams. I will provide you with the question, standard answer, and student answer. Based on the standard answer, you need to determine the correctness of each step in the student’s answer. The student answer will be given in JSON format, detailing each step of their solution, and you should indicate whether each step is correct or incorrect.<br>
+                <br>
+                # Important Notes:<br>
+                1. The student’s answer may have a different approach from the standard answer. If the student’s reasoning is logically sound and their final answer matches the standard answer, then it should be considered correct.<br>
+                2. You need to assess each step’s correctness and mark it with 0 for incorrect and 1 for correct. For example, if there are three steps, where the first is correct, and the second and third are incorrect, then at the end of your response, output a list named judge_result like this: judge_result=[1,0,0].<br>
+                3. If a step (step i) is incorrect because of an error in the previous step (step i-1), it should be considered wrong as well, even if the deduction or calculation in step i itself is technically correct.<br>
+                4. If a step references an unrelated or inapplicable conclusion (even if the conclusion itself is correct), that step should be considered incorrect.<br>
+                5. Critically evaluate all steps and results in your answer, making sure each step or results has an evaluation conclusion.<br>
+                <br>
+                <span style="color: red;">{shot}</span><br>
+                <br>
+                The user will provide questions, model answers, and student answers. Please follow these instructions carefully to grade the student answers. You only need to respond to the final judge_result list, as example: judge_result=[1,1,1,1].Do not do any additional explanation.<br>
+                <hr>
+                <strong>[User]:</strong><br>
+                # question:<br>
+                <span style="color: red;">{question}</span><br>
+                <br>
+                # standard answer:<br>
+                <span style="color: red;">{ground_truth_solution}</span><br>
+                <br>
+                # student answer:<br>
+                <span style="color: red;">{student_solution}</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.content-tab {
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.message-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+/* Fix for active tab text color */
+.tabs.is-toggle li.is-active a {
+    background-color: #363636;
+    border-color: #363636;
+    color: #fff !important;
+}
+.tabs.is-toggle li.is-active a:hover {
+    background-color: #363636;
+    border-color: #363636;
+    color: #fff !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.tabs li');
+  const tabContents = document.querySelectorAll('.content-tab');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('is-active'));
+      // Add active class to clicked tab
+      tab.classList.add('is-active');
+
+      // Hide all tab contents
+      tabContents.forEach(content => content.classList.add('is-hidden'));
+      // Show target tab content
+      const targetId = tab.dataset.tab;
+      document.getElementById(targetId).classList.remove('is-hidden');
+    });
+  });
+});
+</script>
+
 <!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container"> -->
